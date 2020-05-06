@@ -1,0 +1,7 @@
+# Reclassify `.bpmn` `.bpmn2` `.cmmn` `.dmn` `.drl` and `.frm` files as Java:
+*.bpmn linguist-language=Java
+*.bpmn2 linguist-language=Java
+*.cmmn linguist-language=Java
+*.dmn linguist-language=Java
+*.drl linguist-language=Java
+*.frm linguist-language=Java
