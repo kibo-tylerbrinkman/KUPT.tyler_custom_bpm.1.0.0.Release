@@ -31,6 +31,12 @@
       <import>
         <type>java.util.LinkedHashMap</type>
       </import>
+      <import>
+        <type>com.fasterxml.jackson.databind.ObjectMapper</type>
+      </import>
+      <import>
+        <type>com.fasterxml.jackson.databind.type.CollectionType</type>
+      </import>
     </imports>
   </imports>
   <version>1.0</version>
