@@ -4,8 +4,16 @@
       <include>true</include>
       <metadata>
         <id>local</id>
-        <url>/opt/jboss/.m2/repository</url>
+        <url>~/.m2/repository</url>
         <source>LOCAL</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>maven.java.net</id>
+        <url>http://download.java.net/maven/2</url>
+        <source>SETTINGS</source>
       </metadata>
     </repository>
     <repository>
