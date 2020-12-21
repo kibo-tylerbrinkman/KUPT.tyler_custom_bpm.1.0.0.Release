@@ -63,10 +63,7 @@
   <bpmn2:signal id="_4803913d-671c-3bd6-9ac9-cac74ff88803" name="customer_care"/>
   <bpmn2:signal id="_8c45e5e3-5cbc-3441-a970-964edc5752b9" name="fulfilled"/>
   <bpmn2:signal id="_469bba0a-5642-35df-8eed-e42db14f17b0" name="back"/>
-  <bpmn2:signal id="_469bba0a-5642-35df-8eed-e42db14f17b0" name="back"/>
   <bpmn2:signal id="_da084524-3149-3123-a57f-55631d22eec8" name="picked"/>
-  <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
-  <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
   <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
   <bpmn2:process id="Default_FXCB_Process" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="1.0" drools:adHoc="false" name="FulfillmentProcess-FXCB" isExecutable="true" processType="Public">
     <bpmn2:documentation id="_9myRIUCfEeur3OA5fRTmzg"><![CDATA[Default FedEx Cross Border Process]]></bpmn2:documentation>
