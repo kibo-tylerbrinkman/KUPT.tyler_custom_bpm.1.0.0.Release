@@ -89,7 +89,7 @@
   <bpmn2:signal id="_469bba0a-5642-35df-8eed-e42db14f17b0" name="back"/>
   <bpmn2:signal id="_da084524-3149-3123-a57f-55631d22eec8" name="picked"/>
   <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
-  <bpmn2:process id="Default_FXCB_Process" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="1.0" drools:adHoc="false" name="FulfillmentProcess-FXCB" isExecutable="true" processType="Public">
+  <bpmn2:process id="Default_FXCB_Process" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="1.1" drools:adHoc="false" name="FulfillmentProcess-FXCB" isExecutable="true" processType="Public">
     <bpmn2:documentation id="_UAN-wUO1Eeug7o4QkS7BtA"><![CDATA[Default FedEx Cross Border Process]]></bpmn2:documentation>
     <bpmn2:extensionElements>
       <drools:metaData name="customDescription">
@@ -738,6 +738,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
           <drools:script><![CDATA[if (Boolean.TRUE.equals(back)) {
 kcontext.setVariable("back", false);
+kcontext.setVariable("currentState","INVENTORY_AVAILABLE");
 kcontext.getKieRuntime().signalEvent("back", null, kcontext.getProcessInstance().getId());
 } else if (Boolean.TRUE.equals(canceled)) {
     kcontext.setVariable("currentState","CANCELED");

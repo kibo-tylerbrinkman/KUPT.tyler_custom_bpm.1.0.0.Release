@@ -64,7 +64,7 @@
   <bpmn2:signal id="_469bba0a-5642-35df-8eed-e42db14f17b0" name="back"/>
   <bpmn2:signal id="_8c45e5e3-5cbc-3441-a970-964edc5752b9" name="fulfilled"/>
   <bpmn2:signal id="_d0cab90d-8d20-357e-af2b-9be52f7dd25d" name="next"/>
-  <bpmn2:process id="fulfillment.FulfillmentProcess-Transfer" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="2.1" drools:adHoc="false" name="FulfillmentProcess-Transfer" isExecutable="true">
+  <bpmn2:process id="fulfillment.FulfillmentProcess-Transfer" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="2.2" drools:adHoc="false" name="FulfillmentProcess-Transfer" isExecutable="true">
     <bpmn2:documentation id="_iEgq4YvUEeq4xZywPyx6mg"><![CDATA[Transfer Shipments Process]]></bpmn2:documentation>
     <bpmn2:extensionElements>
       <drools:metaData name="customDescription">
@@ -500,6 +500,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
           <drools:script><![CDATA[if (Boolean.TRUE.equals(back)) {
   kcontext.setVariable("back", false);
+  kcontext.setVariable("currentState","INVENTORY_AVAILABLE");
   kcontext.getKieRuntime().signalEvent("back", null, kcontext.getProcessInstance().getId());
 } else if (Boolean.TRUE.equals(canceled)) {
   kcontext.setVariable("currentState","CANCELED");
