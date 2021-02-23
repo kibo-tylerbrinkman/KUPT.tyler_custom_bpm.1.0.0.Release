@@ -701,7 +701,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
       <bpmn2:incoming>_218BDEF8-6015-47C7-8A70-9ACC4E98CF0E</bpmn2:incoming>
       <bpmn2:outgoing>_37BD80F8-F3BC-479B-BE71-EE3A6FB0CD59</bpmn2:outgoing>
       <bpmn2:script><![CDATA[if (currentState == null || currentState.equals("")) {
-  kcontext.setVariable("currentState","PRE_ACCEPT_SHIPMENT");
+  kcontext.setVariable("currentState","ACCEPTED_SHIPMENT");
 }
 System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
     </bpmn2:scriptTask>
