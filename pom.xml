@@ -4,10 +4,44 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kibocommerce.bpm</groupId>
   <artifactId>kibo-fulfillment-workflows</artifactId>
-  <version>1.2108.0</version>
+  <version>1.2110.0-SNAPSHOT</version>
   <packaging>kjar</packaging>
   <name>kibo-fulfillment-workflows</name>
   <description></description>
+
+  <organization>
+    <name>Kibo Software</name>
+    <url>http://www.kibocommerce.com</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>kibocommerce.com</id>
+      <name>Kibo Software</name>
+      <organization>Kibo Software</organization>
+      <organizationUrl>http://www.kibocommerce.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows.git</connection>
+    <url>https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows</url>
+    <developerConnection>scm:git:https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>kibo-businessautomation-snapshots</id>
+      <name>Kibo BusinessAutomation Snapshots</name>
+      <url>http://ng-repo.dev.kibocommerce.com:8081/repository/kibo-businessautomation-snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>kibo-businessautomation-releases</id>
+      <name>Kibo BusinessAutomation Releases</name>
+      <url>http://ng-repo.dev.kibocommerce.com:8081/repository/kibo-businessautomation-releases</url>
+    </repository>
+  </distributionManagement>
 
   <properties>
     <version.org.kie>7.26.0.Final</version.org.kie>

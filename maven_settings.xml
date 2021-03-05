@@ -1,0 +1,57 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      https://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <servers>
+    <server>
+      <id>kibo-businessautomation-snapshots</id>
+      <username>svc_ngnexus</username>
+      <password>MAVENPUBLISHKEY</password>
+    </server>
+    <server>
+      <id>kibo-businessautomation-releases</id>
+      <username>svc_ngnexus</username>
+      <password>MAVENPUBLISHKEY</password>
+    </server>
+  </servers>
+
+  <profiles>
+    <profile>
+      <id>businessautomation</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+          <id>kibo-businessautomation-releases</id>
+          <name>Kibo BusinessAutomation Releases</name>
+          <url>http://ng-repo.dev.kibocommerce.com:8081/repository/kibo-businessautomation-releases/</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>warn</checksumPolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+        <repository>
+          <id>kibo-businessautomation-snapshots</id>
+          <name>Kibo BusinessAutomation Snapshots</name>
+          <url>http://ng-repo.dev.kibocommerce.com:8081/repository/kibo-businessautomation-snapshots/</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
+</settings>
