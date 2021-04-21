@@ -7,4 +7,4 @@ ARG MAVEN_PUBLISH_KEY
 RUN sed -i -r "s/MAVENPUBLISHKEY/${MAVEN_PUBLISH_KEY}/g" maven_settings.xml
 
 RUN mvn -X -s maven_settings.xml clean package
-RUN mvn -X -s maven_settings.xml deploy -fn
+RUN mvn -X -s maven_settings.xml deploy -fn -P nexus-deploy
