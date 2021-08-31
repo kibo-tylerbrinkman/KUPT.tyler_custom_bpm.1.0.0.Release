@@ -91,8 +91,7 @@
   <bpmn2:signal id="_6d8040b0-475e-361c-b6ed-12bb52fa30a8" name="wait_for_transfer"/>
   <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
   <bpmn2:signal id="_da084524-3149-3123-a57f-55631d22eec8" name="picked"/>
-  <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
-  <bpmn2:process id="Default_Delivery_Process" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="1.2120.0" drools:adHoc="false" name="FulfillmentProcess-Delivery" isExecutable="true">
+  <bpmn2:process id="Default_Delivery_Process" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="1.2132.1" drools:adHoc="false" name="Default Delivery Process" isExecutable="true">
     <bpmn2:documentation id="_cVnbIbNNEeuhTppYS5fdrA"><![CDATA[Delivery Process]]></bpmn2:documentation>
     <bpmn2:extensionElements>
       <drools:metaData name="customDescription">
@@ -121,10 +120,10 @@
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="_C6E5F275-FA18-41FE-A649-6C48CCDFD0E5" name="Yes" sourceRef="_666833D4-6084-4D15-A0B7-BBE431056E5F" targetRef="_045BC8B4-F9A5-49E0-8781-4D31121122E7">
+    <bpmn2:sequenceFlow id="_C6E5F275-FA18-41FE-A649-6C48CCDFD0E5" name="No" sourceRef="_666833D4-6084-4D15-A0B7-BBE431056E5F" targetRef="_045BC8B4-F9A5-49E0-8781-4D31121122E7">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[Yes]]></drools:metaValue>
+          <drools:metaValue><![CDATA[No]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_cVnbIrNNEeuhTppYS5fdrA" language="http://www.java.com/java"><![CDATA[return !"READY_FOR_DELIVERY".equals(kcontext.getVariable("currentState"));
@@ -759,8 +758,8 @@ System.out.println(kcontext.getVariable("currentState"));
 ]]></drools:script>
         </drools:onEntry-script>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
-          <drools:script><![CDATA[if (Boolean.TRUE.equals(kcontext.getVariable("assemblyRequired")) 
-&& Boolean.TRUE.equals(kcontext.getVariable("assemblyCompleted"))) {
+          <drools:script><![CDATA[
+if (!Boolean.TRUE.equals(kcontext.getVariable("assemblyRequired")) || Boolean.TRUE.equals(kcontext.getVariable("assemblyCompleted"))) {
     kcontext.setVariable("currentState","READY_FOR_DELIVERY");
 }
 System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
@@ -850,8 +849,17 @@ Available?]]></drools:metaValue>
           <drools:metaValue><![CDATA[Validate Items In Stock]]></drools:metaValue>
         </drools:metaData>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
-          <drools:script><![CDATA[if ("IN_STOCK".equals(stockLevel) && !Boolean.TRUE.equals(kcontext.getVariable("assemblyRequired"))) {
-kcontext.setVariable("currentState","READY_FOR_DELIVERY");
+          <drools:script><![CDATA[
+if (stockLevel == null || stockLevel.equals("")) {
+  kcontext.setVariable("stockLevel","IN_STOCK");
+  stockLevel = "IN_STOCK";
+}
+if ("IN_STOCK".equals(stockLevel)) {
+  if (!Boolean.TRUE.equals(kcontext.getVariable("assemblyRequired"))) {
+    kcontext.setVariable("currentState","READY_FOR_DELIVERY");
+  } else {
+    kcontext.setVariable("currentState","INVENTORY_AVAILABLE");
+  }
 } else if ("PARTIAL_STOCK".equals(stockLevel)) {
 kcontext.setVariable("currentState","PARTIAL_INVENTORY_NOPE");
 } else if ("NO_STOCK".equals(stockLevel)) {
