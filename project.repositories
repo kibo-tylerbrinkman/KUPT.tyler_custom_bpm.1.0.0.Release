@@ -44,7 +44,7 @@
       <include>true</include>
       <metadata>
         <id>local</id>
-        <url>/Users/kelly/.m2/repository</url>
+        <url>/opt/jboss/.m2/repository</url>
         <source>LOCAL</source>
       </metadata>
     </repository>

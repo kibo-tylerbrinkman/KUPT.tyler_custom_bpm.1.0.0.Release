@@ -93,8 +93,6 @@
   <bpmn2:signal id="_6d8040b0-475e-361c-b6ed-12bb52fa30a8" name="wait_for_transfer"/>
   <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
   <bpmn2:signal id="_da084524-3149-3123-a57f-55631d22eec8" name="picked"/>
-  <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
-  <bpmn2:signal id="_d5c39a1d-9ace-3393-b835-f334a1fb9206" name="canceled"/>
   <bpmn2:process id="fulfillment.FulfillmentProcess-BOPIS" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="1.2120.0" drools:adHoc="false" name="FulfillmentProcess-BOPIS" isExecutable="true">
     <bpmn2:documentation id="__7GiUbNMEeuhTppYS5fdrA"><![CDATA[Buy Online Pickup In Store Process]]></bpmn2:documentation>
     <bpmn2:extensionElements>
