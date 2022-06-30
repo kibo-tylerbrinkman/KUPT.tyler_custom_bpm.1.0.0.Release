@@ -30,7 +30,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         
         acceptShipment(wpi, true)
 
-        assertNodeActive(wpi.id, kieSession, "Validate Items In Stock")
+        assertNodeActive(wpi.id, kieSession, "Print Pick List")
         assertCurrentState(wpi, "ACCEPTED_SHIPMENT")
     }
 
@@ -45,10 +45,22 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
     }
 
     @Test
+    fun printPickList() {
+        val wpi = createProcess()
+
+        acceptShipment(wpi, true)
+        printPickList(wpi)
+
+        assertNodeActive(wpi.id, kieSession, "Validate Items In Stock")
+        assertCurrentState(wpi, "PROCESSING_PICK_LIST")
+    }
+
+    @Test
     fun validateStock_inStock() {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
@@ -60,6 +72,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "PARTIAL_STOCK", null)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
@@ -71,6 +84,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "PARTIAL_STOCK", true)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Transfer")
@@ -82,6 +96,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "NO_STOCK", null)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
@@ -93,6 +108,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "NO_STOCK", true)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Transfer")
@@ -104,6 +120,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "NO_STOCK", true)
         waitForTransfer(wpi)
 
@@ -116,6 +133,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
 
@@ -128,6 +146,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, true)
 
@@ -140,6 +159,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
@@ -153,6 +173,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, true)
@@ -166,6 +187,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
@@ -180,6 +202,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
@@ -194,6 +217,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
@@ -209,6 +233,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
@@ -393,6 +418,21 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         taskService!!.start(task.id, "john")
         val data = mapOf("back" to back)
         taskService!!.complete(task.id, "john", data)
+    }
+
+    private fun printPickList(wpi: WorkflowProcessInstance) {
+        val expectedTaskName = "Print Pick List"
+
+        assertProcessInstanceActive(wpi.id, kieSession)
+        assertNodeActive(wpi.id, kieSession, expectedTaskName)
+
+        val tasks = taskService!!.getTasksByStatusByProcessInstanceId(wpi.id, listOf(Status.Reserved), "en-UK")
+        assertEquals(1, tasks.size)
+        val task = tasks[0]
+        assertEquals(expectedTaskName, task.name)
+
+        taskService!!.start(task.id, "john")
+        taskService!!.complete(task.id, "john", HashMap())
     }
 
     companion object {
