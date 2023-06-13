@@ -1,0 +1,10 @@
+**/.*
+**/*.md
+**/*.pid
+**/*.sh
+**/Dockerfile*
+**/Jenkinsfile*
+**/mvnw*
+**/target/
+!**/set-deploy-version.sh
+!**/sonarscanner/sonarnet.sh

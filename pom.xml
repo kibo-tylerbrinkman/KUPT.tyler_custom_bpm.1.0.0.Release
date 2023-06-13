@@ -32,13 +32,32 @@
 
   <properties>
     <version.org.kie>7.26.0.Final</version.org.kie>
+    <java.version>8</java.version>
+    <maven.compiler.release>${java.version}</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     <jackson.version>2.9.7</jackson.version>
     <kotlin.version>1.5.10</kotlin.version>
+    <jacocoOutputDirectory>${project.build.directory}/jacoco-aggregate</jacocoOutputDirectory>
+    <sonar.organization>kibo-ucp</sonar.organization>
+    <sonar.projectName>Kibo.FulfillmentWorkflows</sonar.projectName>
+    <sonar.projectVersion>${project.version}</sonar.projectVersion>
+    <sonar.scm.disabled>true</sonar.scm.disabled>
+    <sonar.scm.provider>git</sonar.scm.provider>
+    <sonar.sources>${project.build.sourceDirectory}</sonar.sources>
+    <sonar.tests>${project.build.testSourceDirectory}</sonar.tests>
+    <sonar.language>java</sonar.language>
+    <sonar.java.source>${java.version}</sonar.java.source>
+    <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+    <sonar.coverage.jacoco.xmlReportPaths>${jacocoOutputDirectory}/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.exclusions>**/*.xml, **/*Test.*</sonar.exclusions>
+    <sonar.coverage.exclusions>
+      ${sonar.tests}/**/*
+    </sonar.coverage.exclusions>
+    <!--suppress UnresolvedMavenProperty -->
+    <sonar.login>${env.SONAR_LOGIN}</sonar.login>
   </properties>
 
   <dependencies>
@@ -102,6 +121,19 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>${java.version}</release>
+        </configuration>
+        <executions>
+          <execution>
+            <id>compile</id>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.2.0</version>
         <configuration>
@@ -135,6 +167,42 @@
         <configuration>
           <jvmTarget>1.8</jvmTarget>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.9</version>
+        <configuration>
+          <excludes>
+            <exclude>**/*Test*</exclude>
+          </excludes>
+          <outputDirectory>${jacocoOutputDirectory}</outputDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+            <configuration>
+              <formats>
+                <format>XML</format>
+              </formats>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.9.1.2184</version>
       </plugin>
     </plugins>
   </build>
