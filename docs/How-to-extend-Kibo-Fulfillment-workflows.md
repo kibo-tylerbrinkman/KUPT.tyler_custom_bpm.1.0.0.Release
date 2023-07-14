@@ -47,7 +47,7 @@ By default, Business Central is available at http://localhost:8080/business-cent
 ### Fork the Kibo Fulfillment Workflows repository
 Forking the repository is a simple two-step process.
 
-1. On GitHub, navigate to the [Kibo.FulfillmentWorkflows](https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows) repository.
+1. On GitHub, navigate to the [Kibo.FulfillmentWorkflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository.
 1. In the top-right corner of the page, click __Fork__.
 
 #### Optionally rename your fork to align with the DevCenter application name
@@ -57,7 +57,7 @@ Forking the repository is a simple two-step process.
     For example: __YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME__
 
 #### Keep your fork synchronized
-It's good practice to regularly sync your fork with the __upstream__ repository. To do this, you'll need to use Git on the command line. You can now set the __upstream__ repository using the [Kibo.FulfillmentWorkflows](https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows) repository you just forked.
+It's good practice to regularly sync your fork with the __upstream__ repository. To do this, you'll need to use Git on the command line. You can now set the __upstream__ repository using the [Kibo.FulfillmentWorkflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository you just forked.
 
 ##### Step 1: Set up Git
 If you haven't yet, you should first set up Git. Don't forget to set up authentication to GitHub from Git as well.
@@ -93,7 +93,7 @@ Now, you have a local copy of your fork of the Kibo.FulfillmentWorkflows reposit
 ##### Step 3: Configure Git to sync your fork with the original Kibo.FulfillmentWorkflows repository
 When you fork a project you can configure Git to pull changes from the original, or __upstream__, repository into the local clone of your fork.
 
-1. On GitHub, navigate to the original [Kibo.FulfillmentWorkflows](https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows) repository.
+1. On GitHub, navigate to the original [Kibo.FulfillmentWorkflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository.
 
 1. Under the repository name, click __Clone or download__.
 
@@ -117,7 +117,7 @@ When you fork a project you can configure Git to pull changes from the original,
 
 1. Type `git remote add upstream`, and then paste the URL you copied in Step 2 and press __Enter__. It will look like this:
     ```
-    $ git remote add upstream https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows.git
+    $ git remote add upstream https://github.com/KiboSoftware/kibo-fulfillment-workflows.git
     ```
 
 1. To verify the new __upstream__ repository you've specified for your fork, type `git remote -v` again. You should see the URL for your fork as __origin__, and the URL for the original Kibo.FulfillmentWorkflows repository as __upstream__.
@@ -125,8 +125,8 @@ When you fork a project you can configure Git to pull changes from the original,
     $ git remote -v
     > origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
     > origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
-    > upstream  https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows.git (fetch)
-    > upstream  https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows.git (push)
+    > upstream  https://github.com/KiboSoftware/kibo-fulfillment-workflows.git (fetch)
+    > upstream  https://github.com/KiboSoftware/kibo-fulfillment-workflows.git (push)
     ```
 
 Now, you can keep your fork synced with the __upstream__ repository with a few Git commands. 
@@ -202,8 +202,8 @@ The forked business assets project can be easily imported into Business Central 
     $ git remote -v
     > origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
     > origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
-    > upstream  https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows.git (fetch)
-    > upstream  https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows.git (push)
+    > upstream  https://github.com/KiboSoftware/kibo-fulfillment-workflows.git (fetch)
+    > upstream  https://github.com/KiboSoftware/kibo-fulfillment-workflows.git (push)
     ```
 
 1. Type `git remote add jbpm`, and then paste the URL you copied in Step 2. Modify the value to include `wbadmin@` and press __Enter__. It will look like this:
@@ -220,8 +220,8 @@ The forked business assets project can be easily imported into Business Central 
     > jbpm	ssh://wbadmin@localhost:8001/MySpace/YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME (push)
     > origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
     > origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
-    > upstream  https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows.git (fetch)
-    > upstream  https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows.git (push)
+    > upstream  https://github.com/KiboSoftware/kibo-fulfillment-workflows.git (fetch)
+    > upstream  https://github.com/KiboSoftware/kibo-fulfillment-workflows.git (push)
     ```
  
 1. Pull or fetch your custom business assets from jBPM Business Central to your forked git repository.
@@ -461,7 +461,7 @@ curl --request PUT 'http://t123.mozu.com/api/commerce/admin/locationGroupConfigu
     > remote: Compressing objects: 100% (8/8), done.
     > remote: Total 8 (delta 3), reused 0 (delta 0), pack-reused 0
     > Unpacking objects: 100% (8/8), done.
-    > From https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows
+    > From https://github.com/KiboSoftware/kibo-fulfillment-workflows
     >  * [new branch]      develop                       -> upstream/develop
     ```
 
