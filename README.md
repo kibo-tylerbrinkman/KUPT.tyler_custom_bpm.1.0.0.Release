@@ -14,7 +14,7 @@
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Kibo-UCP_Kibo.FulfillmentWorkflows&metric=sqale_index&token=61ce5ca36ec3fa4583ca3860bf6f1a1a2d8fafbf)](https://sonarcloud.io/summary/new_code?id=Kibo-UCP_Kibo.FulfillmentWorkflows)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Kibo-UCP_Kibo.FulfillmentWorkflows&metric=alert_status&token=61ce5ca36ec3fa4583ca3860bf6f1a1a2d8fafbf)](https://sonarcloud.io/summary/new_code?id=Kibo-UCP_Kibo.FulfillmentWorkflows)
 
-# Kibo.FulfillmentWorkflows Project
+# Kibo Fulfillment Workflows Project
 
 This project contains the default implementations of Kibo Fulfillment related business assets which are to be deployed within a Business Process Management System. For example, using the [jBPM](https://www.jbpm.org/) Business Process Management Suite.
 
