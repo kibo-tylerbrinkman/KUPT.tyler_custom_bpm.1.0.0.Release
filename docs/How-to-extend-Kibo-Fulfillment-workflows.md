@@ -4,7 +4,7 @@
 The following will allow you to author custom fulfillment workflows using a fork of this repository, upload & install them thru Kibo DevCenter, 
 enable them thru the API and execute them via the Kibo Fulfiller application.
 
-__NOTE:__ This documentation instructs use of the __jBPM Business Central__ application for authoring and testing BPMN workflows locally. An IDE such as Eclipse is an alternative for process authoring and is documented at [jbpm.org](https://jbpm.org). Click the __Read Documentation__ link on the jBPM home page and search the referenced document for __Eclipse Developer Tools__.
+__NOTE:__ This documentation instructs use of the __jBPM Business Central__ application for authoring and testing BPMN workflows locally. An IDE such as Eclipse is an alternative for process authoring and is documented at [jbpm.org](https://www.jbpm.org). Click the __Read Documentation__ link on the jBPM home page and search the referenced document for __Eclipse Developer Tools__.
 
 1. [Setup jBPM Server with Business Central for local development](#setup-jbpm-server-with-business-central-for-local-development)
 1. [Create a Kibo DevCenter application](#create-a-kibo-devcenter-application)
@@ -24,7 +24,7 @@ __NOTE:__ This documentation instructs use of the __jBPM Business Central__ appl
 1. [Syncing your jBPM Business Central repository with your fork repository](#syncing-your-jbpm-business-central-repository-with-your-fork-repository)
 
 ### Setup jBPM Server with Business Central for local development
-The jBPM Server distribution is the easiest way to start with jBPM. The included Business Central application is useful for authoring processes. To get up and running quickly use the jBPM single distribution which can be downloaded at [jbpm.org](http://jbpm.org). Look at the [Getting Started](https://jbpm.org/learn/gettingStarted.html) guide to get yourself familiar with Business Central.
+The jBPM Server distribution is the easiest way to start with jBPM. The included Business Central application is useful for authoring processes. To get up and running quickly use the jBPM single distribution which can be downloaded at [jbpm.org](https://www.jbpm.org). Look at the [Getting Started](https://www.jbpm.org/learn/gettingStartedUsingSingleZipDistribution.html) guide to get yourself familiar with Business Central.
 
 By default, Business Central is available at http://localhost:8080/business-central
 
