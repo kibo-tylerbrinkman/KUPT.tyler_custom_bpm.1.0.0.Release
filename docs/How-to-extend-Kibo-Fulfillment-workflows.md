@@ -154,10 +154,11 @@ __References:__
       <name>YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME</name>
     ```
 
-1. Commit changes to your local copy of the forked repository.
+1. Commit changes to your local copy of the forked repository and then push to the origin repository on GitHub. For example:
     ```
     $ git add pom.xml
     $ git commit -m "Some meaningful message"
+    $ git push origin develop
     ```
 
 ### Import forked business assets project into Business Central
