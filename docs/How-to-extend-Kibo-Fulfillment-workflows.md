@@ -34,12 +34,6 @@ Forking the repository is a simple two-step process.
 1. On GitHub, navigate to the [KiboSoftware/kibo-fulfillment-workflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository.
 1. In the top-right corner of the page, click __Fork__.
 
-#### Optionally rename your fork to align with a desired Kibo Development Center application name
-1. On GitHub, navigate to your forked repository and select __Settings__
-1. Enter the desired name under __Repository name__ and then click the __Rename__ button
-
-    For example: __YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME__
-
 #### Keep your fork synchronized
 It's good practice to regularly sync your fork with the __upstream__ repository. To do this, you'll need to use Git on the command line. You can now set the __upstream__ repository using the [KiboSoftware/kibo-fulfillment-workflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository you just forked.
 
@@ -282,6 +276,11 @@ You can use __Process Definitions__ and __Process Instances__ perspectives of Bu
    * Select the __Fulfillment Business Process Workflow__ capability
 1. Record the application key. For example, __APPLICATION KEY:__ `YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME.1.0.0.Release`
 
+#### Optionally rename your KiboSoftware/kibo-fulfillment-workflows repository fork to align with the Kibo Development Center application name
+1. On GitHub, navigate to your forked repository and select __Settings__
+1. Enter the desired name under __Repository name__ and then click the __Rename__ button
+
+   For example: __YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME__
 
 ### Setup Kibo Development Center application scaffolding
 1. Create a `devcenter-app` subdirectory within the root of your forked project directory. For example, `mkdir -p /Users/YOUR_USERNAME/Projects/Kibo-Applications/Fulfillment/YOUR_APPLICATION_NAME/devcenter-app`
