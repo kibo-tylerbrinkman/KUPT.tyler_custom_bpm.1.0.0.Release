@@ -7,65 +7,49 @@ enable them thru the API and execute them via the Kibo Fulfiller application.
 __NOTE:__ This documentation instructs use of the __jBPM Business Central__ application for authoring and testing BPMN workflows locally. An IDE such as Eclipse is an alternative for process authoring and is documented at [jbpm.org](https://www.jbpm.org). Click the __Read Documentation__ link on the jBPM home page and search the referenced document for __Eclipse Developer Tools__.
 
 1. [Setup jBPM Server with Business Central for local development](#setup-jbpm-server-with-business-central-for-local-development)
-1. [Create a Kibo DevCenter application](#create-a-kibo-devcenter-application)
 1. [Fork the Kibo Fulfillment Workflows repository](#fork-the-kibo-fulfillment-workflows-repository)
 1. [Modify forked repository files](#modify-forked-repository-files)
-1. [Import your forked business assets project into Business Central](#import-your-forked-business-assets-project-into-business-central)
-1. [Pull back your custom business assets to the forked project source code repository](#pull-back-your-custom-business-assets-to-the-forked-project-source-code-repository)
-1. [Deploy your assets to the connected KIE Server](#deploy-your-assets-to-the-connected-kie-server)
-1. [Interact with your newly deployed business assets](#interact-with-your-newly-deployed-business-assets)
-1. [Setup your Kibo DevCenter application scaffolding](#setup-your-kibo-devcenter-application-scaffolding)
-1. [Modify project pom file to add support for synchronizing the KJAR with the DevCenter app](#modify-project-pom-file-to-add-support-for-synchronizing-the-kjar-with-the-devcenter-app)
-1. [Build BPM project and copy DevCenter assets](#build-bpm-project-and-copy-devcenter-assets)
-1. [Upload and Install custom workflows thru DevCenter](#upload-and-install-custom-workflows-thru-devcenter)
+1. [Import forked business assets project into Business Central](#import-forked-business-assets-project-into-business-central)
+1. [Pull back custom business assets to the forked project source code repository](#pull-back-custom-business-assets-to-the-forked-project-source-code-repository)
+1. [Deploy custom assets to the connected KIE Server](#deploy-custom-assets-to-the-connected-kie-server)
+1. [Interact with newly deployed business assets](#interact-with-newly-deployed-business-assets)
+1. [Setup for Kibo Development Center remote synchronization](#setup-for-kibo-development-center-remote-synchronization)
+1. [Setup Kibo Development Center application scaffolding](#setup-kibo-development-center-application-scaffolding)
+1. [Modify project pom file to add support for synchronizing the KJAR with the Development Center app](#modify-project-pom-file-to-add-support-for-synchronizing-the-kjar-with-the-development-center-app)
+1. [Build BPM project and copy Development Center assets](#build-bpm-project-and-copy-development-center-assets)
+1. [Upload and Install custom workflows thru Development Center](#upload-and-install-custom-workflows-thru-development-center)
 1. [Enable custom workflows with the Kibo Location Group Configuration API](#enable-custom-workflows-with-the-kibo-location-group-configuration-api)
 1. [Execute custom workflows via the Kibo Fulfiller app](#execute-custom-workflows-via-the-kibo-fulfiller-app)
-1. [Syncing your fork with the upstream repository](#syncing-your-fork-with-the-upstream-repository)
-1. [Syncing your jBPM Business Central repository with your fork repository](#syncing-your-jbpm-business-central-repository-with-your-fork-repository)
+1. [Syncing custom fork with the upstream repository](#syncing-custom-fork-with-the-upstream-repository)
+1. [Syncing local jBPM Business Central repository with custom fork repository](#syncing-local-jbpm-business-central-repository-with-custom-fork-repository)
 
 ### Setup jBPM Server with Business Central for local development
 The jBPM Server distribution is the easiest way to start with jBPM. The included Business Central application is useful for authoring processes. To get up and running quickly use the jBPM single distribution which can be downloaded at [jbpm.org](https://www.jbpm.org). Look at the [Getting Started](https://www.jbpm.org/learn/gettingStartedUsingSingleZipDistribution.html) guide to get yourself familiar with Business Central.
 
 By default, Business Central is available at http://localhost:8080/business-central
 
-### Create a Kibo DevCenter application
-1. Install [node.js and npm](https://nodejs.org/) via [download](https://nodejs.org/en/download/) or an operating system specific [package manager](https://nodejs.org/en/download/package-manager/)
-1. Install the [Yeomen](https://yeoman.io/) command line tool. Type `npm install -g yo`
-1. Install the [Mozu Actions Generator](https://www.npmjs.com/package/generator-mozu-actions) and [Grunt](https://www.npmjs.com/package/grunt-cli) command line tools. Type `npm install -g generator-mozu-actions grunt-cli`
-1. Request a Kibo DevCenter Account and Access Credentials
-1. Log in to the DevCenter then locate and record your account id. For example, __Name:__ `Your Developer Account` - __Account Id:__ `9999`
-1. Double-click the __Developer Account__ entry to enter the __Developer Account Console__
-1. From the __Developer Account Console__ click the __Develop__ pull-down and select __Applications__
-1. From the __Applications__ console click the __Create Application__ button
-    * Supply a valid __Name__ and __Application ID__ in the __Create Application__ dialogue and then click __Save__. Example application name and ID: `YOUR_DEVCENTER_APP_NAME`
-1. Double-click your new application within the displayed list of applications
-    * Example Dev Center application URI: `https://developer.mozu.com/console/app/edit/YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME.1.0.0.Release`
-1. Within the __Application__ interface click the __Packages__ tab on the left-side of the screen, select the __Capabilities__ tab and then click __Add Capability__
-    * Select the __Fulfillment Business Process Workflow__ capability
-1. Record the application key. For example, __APPLICATION KEY:__ `YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME.1.0.0.Release`
-
 ### Fork the Kibo Fulfillment Workflows repository
 Forking the repository is a simple two-step process.
 
-1. On GitHub, navigate to the [Kibo.FulfillmentWorkflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository.
+1. On GitHub, navigate to the [KiboSoftware/kibo-fulfillment-workflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository.
 1. In the top-right corner of the page, click __Fork__.
 
-#### Optionally rename your fork to align with the DevCenter application name
+#### Optionally rename your fork to align with the Development Center application name
 1. On GitHub, navigate to your forked repository and select __Settings__
 1. Enter the desired name under __Repository name__ and then click the __Rename__ button
 
     For example: __YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME__
 
 #### Keep your fork synchronized
-It's good practice to regularly sync your fork with the __upstream__ repository. To do this, you'll need to use Git on the command line. You can now set the __upstream__ repository using the [Kibo.FulfillmentWorkflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository you just forked.
+It's good practice to regularly sync your fork with the __upstream__ repository. To do this, you'll need to use Git on the command line. You can now set the __upstream__ repository using the [KiboSoftware/kibo-fulfillment-workflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository you just forked.
 
 ##### Step 1: Set up Git
 If you haven't yet, you should first set up Git. Don't forget to set up authentication to GitHub from Git as well.
 
 ##### Step 2: Create a local clone of your fork
-Right now, you have a fork of the Kibo.FulfillmentWorkflows repository on GitHub, but you don't have the files in that repository on your computer. Let's create a clone of your fork locally on your computer.
+Right now, you have a fork of the KiboSoftware/kibo-fulfillment-workflows repository on GitHub, but you don't have the files in that repository on your computer. Let's create a clone of your fork locally on your computer.
 
-1. On GitHub, navigate to __your fork__ of the Kibo.FulfillmentWorkflows repository.
+1. On GitHub, navigate to __your fork__ of the KiboSoftware/kibo-fulfillment-workflows repository.
 
 1. Under the repository name, click __Clone or download__.
 
@@ -88,12 +72,12 @@ Right now, you have a fork of the Kibo.FulfillmentWorkflows repository on GitHub
     > Resolving deltas: 100% (405/405), done.
     ```
 
-Now, you have a local copy of your fork of the Kibo.FulfillmentWorkflows repository.
+Now, you have a local copy of your fork of the KiboSoftware/kibo-fulfillment-workflows repository.
 
-##### Step 3: Configure Git to sync your fork with the original Kibo.FulfillmentWorkflows repository
+##### Step 3: Configure Git to sync your fork with the original KiboSoftware/kibo-fulfillment-workflows repository
 When you fork a project you can configure Git to pull changes from the original, or __upstream__, repository into the local clone of your fork.
 
-1. On GitHub, navigate to the original [Kibo.FulfillmentWorkflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository.
+1. On GitHub, navigate to the original [KiboSoftware/kibo-fulfillment-workflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository.
 
 1. Under the repository name, click __Clone or download__.
 
@@ -131,7 +115,7 @@ When you fork a project you can configure Git to pull changes from the original,
 
 Now, you can keep your fork synced with the __upstream__ repository with a few Git commands. 
 
-For more information, see "[Syncing your fork with the upstream repository](#syncing-your-fork-with-the-upstream-repository)"
+For more information, see "[Syncing custom fork with the upstream repository](#syncing-custom-fork-with-the-upstream-repository)"
 
 __Next steps__
 
@@ -160,7 +144,7 @@ __References:__
     $ git commit -m "Some meaningful message"
     ```
 
-### Import your forked business assets project into Business Central
+### Import forked business assets project into Business Central
 The forked business assets project can be easily imported into Business Central since it’s a valid git repository.
 
 1. Create a git branch named __master__ from the default __develop__ branch
@@ -188,7 +172,7 @@ The forked business assets project can be easily imported into Business Central 
 
     Once the business assets project is imported into Business Central you can start working on it. Just go to the project and add or modify assets such as business processes, forms, rules, decision tables, etc.
 
-### Pull back your custom business assets to the forked project source code repository
+### Pull back custom business assets to the forked project source code repository
 
 1. Go to Settings of the project within Business Central
 
@@ -276,13 +260,30 @@ The forked business assets project can be easily imported into Business Central 
     $ mvn clean install
     ```
 
-### Deploy your assets to the connected KIE Server
+### Deploy custom assets to the connected KIE Server
 Deploy the business assets project into the running KIE Server. After adding assets to your project in Business Central you can just deploy it to a running KIE server instance. Click the __Deploy__ button on your project and in few seconds you should see the project deployed.
 
-### Interact with your newly deployed business assets
+### Interact with newly deployed business assets
 You can use __Process Definitions__ and __Process Instances__ perspectives of Business Central to interact with your newly deployed business assets such as processes or user tasks.
 
-### Setup your Kibo DevCenter application scaffolding
+### Setup for Kibo Development Center remote synchronization
+1. Install [node.js and npm](https://nodejs.org/) via [download](https://nodejs.org/en/download/) or an operating system specific [package manager](https://nodejs.org/en/download/package-manager/)
+1. Install the [Yeomen](https://yeoman.io/) command line tool. Type `npm install -g yo`
+1. Install the [Mozu Actions Generator](https://www.npmjs.com/package/generator-mozu-actions) and [Grunt](https://www.npmjs.com/package/grunt-cli) command line tools. Type `npm install -g generator-mozu-actions grunt-cli`
+1. Request a Kibo DevCenter Account and Access Credentials
+1. Log in to the DevCenter then locate and record your account id. For example, __Name:__ `Your Developer Account` - __Account Id:__ `9999`
+1. Double-click the __Developer Account__ entry to enter the __Developer Account Console__
+1. From the __Developer Account Console__ click the __Develop__ pull-down and select __Applications__
+1. From the __Applications__ console click the __Create Application__ button
+   * Supply a valid __Name__ and __Application ID__ in the __Create Application__ dialogue and then click __Save__. Example application name and ID: `YOUR_DEVCENTER_APP_NAME`
+1. Double-click your new application within the displayed list of applications
+   * Example Dev Center application URI: `https://developer.mozu.com/console/app/edit/YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME.1.0.0.Release`
+1. Within the __Application__ interface click the __Packages__ tab on the left-side of the screen, select the __Capabilities__ tab and then click __Add Capability__
+   * Select the __Fulfillment Business Process Workflow__ capability
+1. Record the application key. For example, __APPLICATION KEY:__ `YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME.1.0.0.Release`
+
+
+### Setup Kibo Development Center application scaffolding
 1. Create a `devcenter-app` subdirectory within the root of your forked project directory. For example, `mkdir -p /Users/YOUR_USERNAME/Projects/Kibo-Applications/Fulfillment/YOUR_APPLICATION_NAME/devcenter-app`
 
 1. Change your current working directory to the `devcenter-app` subdirectory. For example, `cd /Users/YOUR_USERNAME/Projects/Kibo-Applications/Fulfillment/YOUR_APPLICATION_NAME/devcenter-app`
@@ -330,7 +331,7 @@ You can use __Process Definitions__ and __Process Instances__ perspectives of Bu
 References:
 * [Mozu Actions Generator on GitHub](https://github.com/Mozu/generator-mozu-actions)
 
-### Modify project pom file to add support for synchronizing the KJAR with the DevCenter app
+### Modify project pom file to add support for synchronizing the KJAR with the Development Center app
 ```xml
   <profiles>
     <profile>
@@ -377,11 +378,11 @@ References:
   </profiles>
 ```
 
-### Build BPM project and copy DevCenter assets
+### Build BPM project and copy Development Center assets
 * Type `mvn clean install -P devcenter`
 * Verify existence of KJAR file in `devcenter-app/assets` directory
 
-### Upload and Install custom workflows thru DevCenter
+### Upload and Install custom workflows thru Development Center
 * Change your current working directory to the `devcenter-app` directory
 * Validate content of file `mozu.config.json`
 * Type `grunt -f` to upload your application assets to Kibo DevCenter
@@ -448,7 +449,7 @@ curl --request PUT 'http://t123.mozu.com/api/commerce/admin/locationGroupConfigu
 * Navigate to the Kibo Fulfiller App and step through the workflow tasks for the corresponding shipment
 * Confirm the functionality of your custom workflow
 
-## Syncing your fork with the upstream repository
+## Syncing custom fork with the upstream repository
 
 1. Open Terminal.
 
@@ -490,7 +491,7 @@ __Tip:__ Syncing your fork only updates your local copy of the repository. To up
 
 For more information, see "[Syncing a fork](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork)."
 
-## Syncing your jBPM Business Central repository with your fork repository
+## Syncing local jBPM Business Central repository with custom fork repository
     ```
     $ git checkout master
     > Switched to branch 'master'
