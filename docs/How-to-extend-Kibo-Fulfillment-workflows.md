@@ -34,7 +34,7 @@ Forking the repository is a simple two-step process.
 1. On GitHub, navigate to the [KiboSoftware/kibo-fulfillment-workflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository.
 1. In the top-right corner of the page, click __Fork__.
 
-#### Optionally rename your fork to align with the Development Center application name
+#### Optionally rename your fork to align with a desired Kibo Development Center application name
 1. On GitHub, navigate to your forked repository and select __Settings__
 1. Enter the desired name under __Repository name__ and then click the __Rename__ button
 
