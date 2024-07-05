@@ -7,13 +7,13 @@ enable them thru the API and execute them via the Kibo Fulfiller application.
 __NOTE:__ This documentation instructs use of the __jBPM Business Central__ application for authoring and testing BPMN workflows locally. An IDE such as Eclipse is an alternative for process authoring and is documented at [jbpm.org](https://www.jbpm.org). Click the __Read Documentation__ link on the jBPM home page and search the referenced document for __Eclipse Developer Tools__.
 
 1. [Setup jBPM Server with Business Central for local development](#setup-jbpm-server-with-business-central-for-local-development)
+1. [Setup for Kibo Development Center remote synchronization](#setup-for-kibo-development-center-remote-synchronization)
 1. [Fork the Kibo Fulfillment Workflows repository](#fork-the-kibo-fulfillment-workflows-repository)
 1. [Modify forked repository files](#modify-forked-repository-files)
 1. [Import forked business assets project into Business Central](#import-forked-business-assets-project-into-business-central)
 1. [Pull back custom business assets to the forked project source code repository](#pull-back-custom-business-assets-to-the-forked-project-source-code-repository)
 1. [Deploy custom assets to the connected KIE Server](#deploy-custom-assets-to-the-connected-kie-server)
 1. [Interact with newly deployed business assets](#interact-with-newly-deployed-business-assets)
-1. [Setup for Kibo Development Center remote synchronization](#setup-for-kibo-development-center-remote-synchronization)
 1. [Setup Kibo Development Center application scaffolding](#setup-kibo-development-center-application-scaffolding)
 1. [Modify project pom file to add support for synchronizing the KJAR with the Development Center app](#modify-project-pom-file-to-add-support-for-synchronizing-the-kjar-with-the-development-center-app)
 1. [Build BPM project and copy Development Center assets](#build-bpm-project-and-copy-development-center-assets)
@@ -28,11 +28,33 @@ The jBPM Server distribution is the easiest way to start with jBPM. The included
 
 By default, Business Central is available at http://localhost:8080/business-central
 
+### Setup for Kibo Development Center remote synchronization
+1. Install [node.js and npm](https://nodejs.org/) via [download](https://nodejs.org/en/download/) or an operating system specific [package manager](https://nodejs.org/en/download/package-manager/)
+1. Install the [Yeomen](https://yeoman.io/) command line tool. Type `npm install -g yo`
+1. Install the [Mozu Actions Generator](https://www.npmjs.com/package/generator-mozu-actions) and [Grunt](https://www.npmjs.com/package/grunt-cli) command line tools. Type `npm install -g generator-mozu-actions grunt-cli`
+1. Request a Kibo Development Center Account and Access Credentials
+1. Log in to the Development Center then locate and record your account id. For example, __Name:__ `Your Developer Account` - __Account Id:__ `9999`
+1. Double-click the __Developer Account__ entry to enter the __Developer Account Console__
+1. From the __Developer Account Console__ click the __Develop__ pull-down and select __Applications__
+1. From the __Applications__ console click the __Create Application__ button
+   * Supply a valid __Name__ and __Application ID__ in the __Create Application__ dialogue and then click __Save__. Example application name and ID: `YOUR_DEVCENTER_APP_NAME`
+1. Double-click your new application within the displayed list of applications
+   * Example Dev Center application URI: `https://developer.mozu.com/console/app/edit/YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME.1.0.0.Release`
+1. Within the __Application__ interface click the __Packages__ tab on the left-side of the screen, select the __Capabilities__ tab and then click __Add Capability__
+   * Select the __Fulfillment Business Process Workflow__ capability
+1. Record the application key for further extensibility setup steps. For example, __APPLICATION KEY:__ `YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME.1.0.0.Release`
+
 ### Fork the Kibo Fulfillment Workflows repository
 Forking the repository is a simple two-step process.
 
 1. On GitHub, navigate to the [KiboSoftware/kibo-fulfillment-workflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository.
 1. In the top-right corner of the page, click __Fork__.
+
+#### Optionally rename your KiboSoftware/kibo-fulfillment-workflows repository fork to align with the Kibo Development Center application name
+1. On GitHub, navigate to your forked repository and select __Settings__
+1. Enter the desired name under __Repository name__ and then click the __Rename__ button
+
+   For example: __YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME__
 
 #### Keep your fork synchronized
 It's good practice to regularly sync your fork with the __upstream__ repository. To do this, you'll need to use Git on the command line. You can now set the __upstream__ repository using the [KiboSoftware/kibo-fulfillment-workflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository you just forked.
@@ -259,28 +281,6 @@ Deploy the business assets project into the running KIE Server. After adding ass
 
 ### Interact with newly deployed business assets
 You can use __Process Definitions__ and __Process Instances__ perspectives of Business Central to interact with your newly deployed business assets such as processes or user tasks.
-
-### Setup for Kibo Development Center remote synchronization
-1. Install [node.js and npm](https://nodejs.org/) via [download](https://nodejs.org/en/download/) or an operating system specific [package manager](https://nodejs.org/en/download/package-manager/)
-1. Install the [Yeomen](https://yeoman.io/) command line tool. Type `npm install -g yo`
-1. Install the [Mozu Actions Generator](https://www.npmjs.com/package/generator-mozu-actions) and [Grunt](https://www.npmjs.com/package/grunt-cli) command line tools. Type `npm install -g generator-mozu-actions grunt-cli`
-1. Request a Kibo Development Center Account and Access Credentials
-1. Log in to the Development Center then locate and record your account id. For example, __Name:__ `Your Developer Account` - __Account Id:__ `9999`
-1. Double-click the __Developer Account__ entry to enter the __Developer Account Console__
-1. From the __Developer Account Console__ click the __Develop__ pull-down and select __Applications__
-1. From the __Applications__ console click the __Create Application__ button
-   * Supply a valid __Name__ and __Application ID__ in the __Create Application__ dialogue and then click __Save__. Example application name and ID: `YOUR_DEVCENTER_APP_NAME`
-1. Double-click your new application within the displayed list of applications
-   * Example Dev Center application URI: `https://developer.mozu.com/console/app/edit/YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME.1.0.0.Release`
-1. Within the __Application__ interface click the __Packages__ tab on the left-side of the screen, select the __Capabilities__ tab and then click __Add Capability__
-   * Select the __Fulfillment Business Process Workflow__ capability
-1. Record the application key. For example, __APPLICATION KEY:__ `YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME.1.0.0.Release`
-
-#### Optionally rename your KiboSoftware/kibo-fulfillment-workflows repository fork to align with the Kibo Development Center application name
-1. On GitHub, navigate to your forked repository and select __Settings__
-1. Enter the desired name under __Repository name__ and then click the __Rename__ button
-
-   For example: __YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_DEVCENTER_APP_NAME__
 
 ### Setup Kibo Development Center application scaffolding
 1. Create a `devcenter-app` subdirectory within the root of your forked project directory. For example, `mkdir -p /Users/YOUR_USERNAME/Projects/Kibo-Applications/Fulfillment/YOUR_APPLICATION_NAME/devcenter-app`
