@@ -158,7 +158,7 @@ __References:__
     ```
     $ git add pom.xml
     $ git commit -m "Some meaningful message"
-    $ git push origin feature-branch
+    $ git push origin develop
     ```
 
 ### Import forked business assets project into Business Central
