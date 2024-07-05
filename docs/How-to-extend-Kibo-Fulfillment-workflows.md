@@ -1,7 +1,7 @@
 # How to Extend Kibo Fulfillment
 
 ### Overview
-The following will allow you to author custom fulfillment workflows using a fork of this repository, upload & install them thru Kibo DevCenter, 
+The following will allow you to author custom fulfillment workflows using a fork of this repository, upload & install them thru Kibo Development Center, 
 enable them thru the API and execute them via the Kibo Fulfiller application.
 
 __NOTE:__ This documentation instructs use of the __jBPM Business Central__ application for authoring and testing BPMN workflows locally. An IDE such as Eclipse is an alternative for process authoring and is documented at [jbpm.org](https://www.jbpm.org). Click the __Read Documentation__ link on the jBPM home page and search the referenced document for __Eclipse Developer Tools__.
@@ -270,8 +270,8 @@ You can use __Process Definitions__ and __Process Instances__ perspectives of Bu
 1. Install [node.js and npm](https://nodejs.org/) via [download](https://nodejs.org/en/download/) or an operating system specific [package manager](https://nodejs.org/en/download/package-manager/)
 1. Install the [Yeomen](https://yeoman.io/) command line tool. Type `npm install -g yo`
 1. Install the [Mozu Actions Generator](https://www.npmjs.com/package/generator-mozu-actions) and [Grunt](https://www.npmjs.com/package/grunt-cli) command line tools. Type `npm install -g generator-mozu-actions grunt-cli`
-1. Request a Kibo DevCenter Account and Access Credentials
-1. Log in to the DevCenter then locate and record your account id. For example, __Name:__ `Your Developer Account` - __Account Id:__ `9999`
+1. Request a Kibo Development Center Account and Access Credentials
+1. Log in to the Development Center then locate and record your account id. For example, __Name:__ `Your Developer Account` - __Account Id:__ `9999`
 1. Double-click the __Developer Account__ entry to enter the __Developer Account Console__
 1. From the __Developer Account Console__ click the __Develop__ pull-down and select __Applications__
 1. From the __Applications__ console click the __Create Application__ button
@@ -288,7 +288,7 @@ You can use __Process Definitions__ and __Process Instances__ perspectives of Bu
 
 1. Change your current working directory to the `devcenter-app` subdirectory. For example, `cd /Users/YOUR_USERNAME/Projects/Kibo-Applications/Fulfillment/YOUR_APPLICATION_NAME/devcenter-app`
 
-1. Create the DevCenter application scaffolding. Type `yo mozu-actions` and then answer prompts specific to your application.
+1. Create the Development Center application scaffolding. Type `yo mozu-actions` and then answer prompts specific to your application.
 
     For example:
     ```
@@ -385,8 +385,8 @@ References:
 ### Upload and Install custom workflows thru Development Center
 * Change your current working directory to the `devcenter-app` directory
 * Validate content of file `mozu.config.json`
-* Type `grunt -f` to upload your application assets to Kibo DevCenter
-* Log in to Kibo DevCenter and open your application
+* Type `grunt -f` to upload your application assets to Kibo Development Center
+* Log in to Kibo Development Center and open your application
 * Verify existence of your uploaded application assets in the __Packages > Assets__ view
 * Click the __Install__ button
 * Select the appropriate Sandbox and click __OK__
