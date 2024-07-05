@@ -95,7 +95,7 @@ When you fork a project you can configure Git to pull changes from the original,
 
 1. On GitHub, navigate to the original [KiboSoftware/kibo-fulfillment-workflows](https://github.com/KiboSoftware/kibo-fulfillment-workflows) repository.
 
-1. Under the repository name, click __Clone or download__.
+1. Under the repository name, click __Code__ and then select the desired __Clone or download__ option.
 
 1. To clone the repository using HTTPS, under __Clone with HTTPS__, click the displayed clipboard icon. To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, click __Use SSH__, then click the __Clone URL__ button.
 
@@ -156,7 +156,7 @@ __References:__
 
 1. Commit changes to your local copy of the forked repository.
     ```
-    $ git add -A
+    $ git add pom.xml
     $ git commit -m "Some meaningful message"
     ```
 
