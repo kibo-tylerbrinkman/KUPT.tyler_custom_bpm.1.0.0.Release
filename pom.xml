@@ -23,13 +23,6 @@
     </developer>
   </developers>
 
-  <scm>
-    <connection>scm:git:https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows.git</connection>
-    <url>https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows</url>
-    <developerConnection>scm:git:https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-
   <properties>
     <version.org.kie>7.26.0.Final</version.org.kie>
     <java.version>8</java.version>
