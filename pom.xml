@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.kibocommerce.bpm</groupId>
-  <artifactId>kibo-fulfillment-workflows</artifactId>
-  <version>1.2430.0-SNAPSHOT</version>
+  <groupId>KUPT</groupId>
+  <artifactId>KUPT.tyler_custom_bpm.1.0.0.Release</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>kjar</packaging>
-  <name>kibo-fulfillment-workflows</name>
+  <name>KUPT.tyler_custom_bpm.1.0.0.Release</name>
   <description></description>
 
   <organization>
@@ -84,12 +85,12 @@
       <version>1.4.10</version>
       <scope>test</scope>
     </dependency>
-      <dependency>
-          <groupId>org.jbpm</groupId>
-          <artifactId>jbpm-test</artifactId>
-          <version>${version.org.kie}</version>
-          <scope>test</scope>
-      </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-test</artifactId>
+      <version>${version.org.kie}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-stdlib-jdk8</artifactId>
